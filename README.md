@@ -36,16 +36,8 @@ It is possible also pass the `Color(0xFFFFEB3B).swatch` to the `ThemeData`
 MaterialApp(
   title: 'ColorShade Demo',
   theme: ThemeData(
-    brightness: Brightness.light,
-    useMaterial3: true,
-    colorSchemeSeed: const Color(0xFFFFEB3B).swatch,
+    primarySwatch: const Color(0xFFFFEB3B).swatch,
   ),
-  darkTheme: ThemeData(
-    brightness: Brightness.dark,
-    useMaterial3: true,
-    colorSchemeSeed: const Color(0xFFFFEB3B).swatch,
-  ),
-  themeMode: ThemeMode.system,
   home: HomePage(),
 )
 ```

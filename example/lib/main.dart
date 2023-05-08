@@ -28,12 +28,12 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
-        colorSchemeSeed: const Color(0xFFFFEB3B).swatch,
+        primarySwatch: const Color(0xFFFFEB3B).swatch,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         useMaterial3: true,
-        colorSchemeSeed: const Color(0xFFFFEB3B).swatch,
+        primarySwatch: const Color(0xFFFFEB3B).swatch,
       ),
       themeMode: _isDarkTheme ? ThemeMode.dark : ThemeMode.light,
       home: MyHomePage(
