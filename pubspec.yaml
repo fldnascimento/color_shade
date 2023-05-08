@@ -1,6 +1,6 @@
 name: color_shade
 description: Extends the Color class to generate shades from the primary color.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/fldnascimento/color_shade
 
 environment:
