@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class Shade {
+  /// Convert int to ARBG
   static String hexFromArgb(int a, int r, int g, int b) {
     return '${a.toRadixString(16).padLeft(2, '0').toUpperCase()}'
         '${r.toRadixString(16).padLeft(2, '0').toUpperCase()}'
@@ -8,10 +9,12 @@ abstract class Shade {
         '${b.toRadixString(16).padLeft(2, '0').toUpperCase()}';
   }
 
+  /// Convert hex to int
   static int intFromHex(String hex) {
     return int.tryParse(hex, radix: 16) ?? 0;
   }
 
+  /// Mix colors from an amount
   static Color mixColors(Color argb1, Color argb2, double amount) {
     final p = amount / 100;
 
@@ -24,16 +27,7 @@ abstract class Shade {
     return Color(intFromHex(hex));
   }
 
-  // $scope.multiply = function(rgb1, rgb2){
-  // 	rgb1.b = Math.floor(rgb1.b * rgb2.b / 255);
-  // 	rgb1.g = Math.floor(rgb1.g * rgb2.g / 255);
-  // 	rgb1.r = Math.floor(rgb1.r * rgb2.r / 255);
-  // 	return tinycolor('rgb ' + rgb1.r + ' ' + rgb1.g + ' ' + rgb1.b);
-  // };
-
-// Expected: Color:<Color(0xfffdd835)>
-//   Actual: Color:<Color(0xffffe935)>
-
+  /// Multiply the two colors
   static Color multiply(Color argb1, Color argb2) {
     final a = argb1.alpha;
     final r = (argb1.red * argb2.red / 255).floor();
@@ -44,7 +38,8 @@ abstract class Shade {
     return Color(intFromHex(hex));
   }
 
-  static MaterialColor shades(Color colorBase) {
+  /// Generate shades based on colorBase
+  static MaterialColor swatch(Color colorBase) {
     const baseLight = Color(0xFFFFFFFF);
     final baseDark = multiply(colorBase, colorBase);
 
@@ -66,19 +61,20 @@ abstract class Shade {
   }
 }
 
+/// Extends the Color class to generate shades
 extension ColorShadeExtension on Color {
-  MaterialColor get shades {
-    return Shade.shades(this);
+  MaterialColor get swatch {
+    return Shade.swatch(this);
   }
 
-  Color get shade50 => shades[50]!;
-  Color get shade100 => shades[100]!;
-  Color get shade200 => shades[200]!;
-  Color get shade300 => shades[300]!;
-  Color get shade400 => shades[400]!;
-  Color get shade500 => shades[500]!;
-  Color get shade600 => shades[600]!;
-  Color get shade700 => shades[700]!;
-  Color get shade800 => shades[800]!;
-  Color get shade900 => shades[900]!;
+  Color get shade50 => swatch[50]!;
+  Color get shade100 => swatch[100]!;
+  Color get shade200 => swatch[200]!;
+  Color get shade300 => swatch[300]!;
+  Color get shade400 => swatch[400]!;
+  Color get shade500 => swatch[500]!;
+  Color get shade600 => swatch[600]!;
+  Color get shade700 => swatch[700]!;
+  Color get shade800 => swatch[800]!;
+  Color get shade900 => swatch[900]!;
 }
