@@ -1,39 +1,51 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# color_shade
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+![Pub dev](https://img.shields.io/pub/v/color_shade)
+![Coverage Status](https://img.shields.io/badge/coverage-100%25-green)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Overview
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+A package that extends the Color class to generate shades from the primary color.
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+To use it, just import the package and the shades will already be available
 
 ```dart
-const like = 'sample';
+import 'package:color_shade/color_shade.dart';
+
+Color(0xFFFFEB3B).shade700;
 ```
+It is possible to access tones from 50 to 900, the same as the `Colors.yellow` of the material, for example
 
-## Additional information
+```dart
+  const primaryColor = Color(0xFFFFEB3B);
+  primaryColor.shade50;
+  primaryColor.shade100;
+  primaryColor.shade200;
+  primaryColor.shade300;
+  primaryColor.shade400;
+  primaryColor.shade500;
+  primaryColor.shade600;
+  primaryColor.shade700;
+  primaryColor.shade800;
+  primaryColor.shade900;
+```
+It is possible also pass the `Color(0xFFFFEB3B).swatch` to the `ThemeData`
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+MaterialApp(
+  title: 'ColorShade Demo',
+  theme: ThemeData(
+    brightness: Brightness.light,
+    useMaterial3: true,
+    colorSchemeSeed: const Color(0xFFFFEB3B).swatch,
+  ),
+  darkTheme: ThemeData(
+    brightness: Brightness.dark,
+    useMaterial3: true,
+    colorSchemeSeed: const Color(0xFFFFEB3B).swatch,
+  ),
+  themeMode: ThemeMode.system,
+  home: HomePage(),
+)
+```
